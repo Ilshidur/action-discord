@@ -9,6 +9,10 @@ Supports all [workflow event types](https://developer.github.com/webhooks/#event
 
 ![Discord message](discord.png "Discord message")
 
+This GitHub action is part of a list of Actions that are located in an other repo. Feel free to check it out : https://github.com/Ilshidur/actions.
+
+<hr/>
+
 ## Usage
 
 ```
