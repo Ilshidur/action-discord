@@ -41,3 +41,10 @@ By default, the GitHub action will send a notificaction with the event informati
 * **`DISCORD_WEBHOOK`** (**required**): the Discord webhook URL (see https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
   * ***IMPORTANT !!* You MUST NOT append `/github` at the end of the webhook.**
 * That's all.
+
+<hr/>
+
+<p align="center">
+  Don't forget to 🌟 Star 🌟 the repo if you like this GitHub Action !<br/>
+  <a href="https://github.com/Ilshidur/action-discord/issues/new">Your feedback is appreciated</a>
+</p>
