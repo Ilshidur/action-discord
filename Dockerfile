@@ -1,4 +1,4 @@
-FROM debian:9.7-slim
+FROM debian:9.8-slim
 
 LABEL "com.github.actions.name"="Actions for Discord"
 LABEL "com.github.actions.description"="Outputs a message to Discord."
