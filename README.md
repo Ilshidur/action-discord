@@ -42,6 +42,13 @@ By default, the GitHub action will send a notificaction with the event informati
   * ***IMPORTANT !!* You MUST NOT append `/github` at the end of the webhook.**
 * That's all.
 
+## Alternatives
+
+Because open source is about everyone :
+
+https://github.com/marketplace/actions/discord-notify <br/>
+![](https://img.shields.io/github/stars/appleboy/discord-action.svg?label=Stars&style=social)
+
 <hr/>
 
 <p align="center">
