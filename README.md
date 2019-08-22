@@ -15,9 +15,22 @@ This GitHub action is part of a list of Actions that are located in an other rep
 
 ## Usage
 
+### New YML synthax
+
+```yaml
+- name: Discord notification
+  env:
+    DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+  uses: Ilshidur/action-discord@master
+  with:
+    args: 'The project has been deployed.'
+```
+
+### (legacy) HCL synthax
+
 ```
 action "Discord notification" {
-  uses = "Ilshidur/actions/discord@master"
+  uses = "Ilshidur/action-discord@master"
   secrets = ["DISCORD_WEBHOOK"]
   args = "The project has been deployed."
 }
