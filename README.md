@@ -1,5 +1,7 @@
 # 🚀 Discord for GitHub Actions
 
+[![Build Status][build-badge]][build-url]
+
 Sends a Discord notification message. Simple as that.
 Supports all [workflow event types](https://developer.github.com/webhooks/#events) by using the [Discord GitHub webhooks](https://discordapp.com/developers/docs/resources/webhook#execute-githubcompatible-webhook).
 
@@ -68,3 +70,6 @@ https://github.com/marketplace/actions/discord-notify <br/>
   Don't forget to 🌟 Star 🌟 the repo if you like this GitHub Action !<br/>
   <a href="https://github.com/Ilshidur/action-discord/issues/new">Your feedback is appreciated</a>
 </p>
+
+[build-badge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FIlshidur%2Faction-discord%2Fbadge&style=flat
+[build-url]: https://actions-badge.atrox.dev/Ilshidur/action-discord/goto
