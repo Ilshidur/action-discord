@@ -17,7 +17,7 @@ This GitHub action is part of a list of Actions that are located in an other rep
 
 ## Usage
 
-### New YML synthax
+### New YML syntax
 
 ```yaml
 - name: Discord notification
@@ -28,7 +28,7 @@ This GitHub action is part of a list of Actions that are located in an other rep
     args: 'The project has been deployed.'
 ```
 
-### (legacy) HCL synthax
+### (legacy) HCL syntax
 
 ```
 action "Discord notification" {
