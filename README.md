@@ -17,25 +17,13 @@ This GitHub action is part of a list of Actions that are located in an other rep
 
 ## Usage
 
-### New YML syntax
-
 ```yaml
 - name: Discord notification
   env:
     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
   uses: Ilshidur/action-discord@master
   with:
-    args: 'The project has been deployed.'
-```
-
-### (legacy) HCL syntax
-
-```
-action "Discord notification" {
-  uses = "Ilshidur/action-discord@master"
-  secrets = ["DISCORD_WEBHOOK"]
-  args = "The project has been deployed."
-}
+    args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed.'
 ```
 
 **NOTICE :** for stability purposes, it is recommended to use the action with an explicit commit SHA-1 :
@@ -46,15 +34,27 @@ action "Discord notification" {
 
 By default, the GitHub action will send a notificaction with the event informations. Providing the arguments will override the message.
 
+**Environment variables** can be interpolated in the message using brackets (`{{` and `}}`) :
+
+e.g.: `Action called : {{ GITHUB_ACTION }}`
+
+**Event Payload** data can also be interpolated in the message using brackets (`{{` and `}}`) with the `EVENT_PAYLOAD` variable.
+
+e.g.: `Action called: {{ GITHUB_ACTION }} as {{ EVENT_PAYLOAD.pull_request.id }}`
+
+> See the [event types](https://developer.github.com/v3/activity/events/types) for valid payload informations.
+
 #### Examples
 
 * `args = "Hello, beautiful ! I ran a GitHub Actions for you <3"`
 * `args = "I showed you my commit. Please respond."`
 
-### Secrets
+### Environment variables
 
-* **`DISCORD_WEBHOOK`** (**required**): the Discord webhook URL (see https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+* **`DISCORD_WEBHOOK`** (**required**): the Discord webhook URL (see https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
   * ***IMPORTANT !!* You MUST NOT append `/github` at the end of the webhook.**
+* **`DISCORD_USERNAME`** (*optional*): overrides the bot nickname.
+* **`DISCORD_AVATAR`** (*optional*): overrides the avatar URL.
 * That's all.
 
 ## Alternatives

@@ -1,4 +1,4 @@
-FROM debian:9.11-slim
+FROM mhart/alpine-node:12.13.0
 
 LABEL "com.github.actions.name"="Actions for Discord"
 LABEL "com.github.actions.description"="Outputs a message to Discord."
@@ -10,8 +10,9 @@ LABEL "homepage"="https://github.com/Ilshidur/actions/discord"
 LABEL "maintainer"="Ilshidur <ilshidur@gmail.com>"
 LABEL "version"="0.0.2"
 
-RUN apt-get update && apt-get install -y curl
+ADD package.json package-lock.json /
+RUN npm ci --production
+ADD entrypoint.js /
+RUN chmod +x /entrypoint.js
 
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["node", "/entrypoint.js"]
