@@ -1,6 +1,6 @@
 {
   "name": "action-discord",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "GitHub Action that sends a Discord notification.",
   "private": true,
   "scripts": {
