@@ -28,7 +28,7 @@ This GitHub action is part of a list of Actions that are located in an other rep
 
 **NOTICE :** for stability purposes, it is recommended to use the action with an explicit commit SHA-1 :
 
-`uses = "Ilshidur/actions/discord@a08c189"` (=> link to the commits list : https://github.com/Ilshidur/actions/commits/master)
+`uses = "Ilshidur/actions/discord@4420243"` (=> link to the commits list : https://github.com/Ilshidur/action-discord/commits/master)
 
 ### Arguments
 
