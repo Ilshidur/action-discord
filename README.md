@@ -61,7 +61,7 @@ e.g.: `Action called: {{ GITHUB_ACTION }} as {{ EVENT_PAYLOAD.pull_request.id }}
 
 Because open source is about everyone :
 
-https://github.com/marketplace/actions/discord-notify <br/>
+https://github.com/marketplace/actions/discord-message-notify <br/>
 ![](https://img.shields.io/github/stars/appleboy/discord-action.svg?label=Stars&style=social)
 
 <hr/>
