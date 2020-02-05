@@ -1,0 +1,17 @@
+name: action-discord
+author: Ilshidur
+description: Outputs a message to Discord.
+
+run:
+  using: 'docker'
+  image: 'Dockerfile'
+
+inputs:
+  args:
+    description: 'Message override.'
+    required: false
+outputs:
+
+branding:
+  icon: message-square
+  color: gray-dark
