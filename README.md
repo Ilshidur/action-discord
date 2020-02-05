@@ -5,8 +5,6 @@
 Sends a Discord notification message. Simple as that.
 Supports all [workflow event types](https://developer.github.com/webhooks/#events) by using the [Discord GitHub webhooks](https://discordapp.com/developers/docs/resources/webhook#execute-githubcompatible-webhook).
 
-![GitHub Action](action.png "GitHub Action")
-
 *Appearance on Discord :*
 
 ![Discord message](preview.png "Discord message")
@@ -63,6 +61,11 @@ Because open source is about everyone :
 
 https://github.com/marketplace/actions/discord-message-notify <br/>
 ![](https://img.shields.io/github/stars/appleboy/discord-action.svg?label=Stars&style=social)
+
+## TODO
+
+* [Pass arguments with the `with` keyword](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#jobsjob_idstepswith)
+* Run outside of a container.
 
 <hr/>
 
