@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:12.15.0
+FROM mhart/alpine-node:12.16.0
 
 LABEL "com.github.actions.name"="Actions for Discord"
 LABEL "com.github.actions.description"="Outputs a message to Discord."
