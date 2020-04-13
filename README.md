@@ -11,6 +11,13 @@ Supports all [workflow event types](https://developer.github.com/webhooks/#event
 
 This GitHub action is part of a list of Actions that are located in an other repo. Feel free to check it out : https://github.com/Ilshidur/actions.
 
+## Compatibility note
+
+As this Action is containerized with Docker, [it can only run on Linux environments](https://help.github.com/en/actions/building-actions/about-actions#types-of-actions).
+
+> Docker container actions can only execute in the GitHub-hosted Linux environment.
+> Self-hosted runners must use a Linux operating system and have Docker installed to run Docker container actions. For more information about the requirements of self-hosted runners, see "About self-hosted runners."
+
 <hr/>
 
 ## Usage
