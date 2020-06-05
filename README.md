@@ -33,7 +33,7 @@ As this Action is containerized with Docker, [it can only run on Linux environme
 
 **NOTICE :** for stability purposes, it is recommended to use the action with an explicit commit SHA-1 :
 
-`uses = "Ilshidur/actions/discord@4420243"` (=> link to the commits list : https://github.com/Ilshidur/action-discord/commits/master)
+`uses = "Ilshidur/actions-discord@759f6ea"` (&rarr; link to the commits list : https://github.com/Ilshidur/action-discord/commits/master)
 
 ### Arguments
 
