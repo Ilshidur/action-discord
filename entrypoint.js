@@ -32,7 +32,12 @@ let payload;
 if (argv._.length === 0) {
   // If argument NOT provided, let Discord show the event informations.
   url = `${process.env.DISCORD_WEBHOOK}/github`;
-  payload = JSON.stringify(JSON.parse(eventContent));
+  let eventContentObj = JSON.parse(eventContent);
+  payload = JSON.stringify({
+    ...eventContentObj;
+    ...process.env.DISCORD_USERNAME && { username: process.env.DISCORD_USERNAME },
+    ...process.env.DISCORD_AVATAR && { avatar_url: process.env.DISCORD_AVATAR },    
+  });
 } else {
   // Otherwise, if the argument is provided, let Discord override the message.
   const args = argv._.join(' ');
