@@ -31,23 +31,28 @@ _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 let url;
 let payload;
 
-if (argv._.length === 0) {
-  // If argument NOT provided, let Discord show the event informations.
+if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
+  // If argument and embeds NOT provided, let Discord show the event informations.
   url = `${process.env.DISCORD_WEBHOOK}/github`;
-  let eventContentObj = JSON.parse(eventContent);
-  payload = JSON.stringify({
-    ...eventContentObj;
-    ...process.env.DISCORD_USERNAME && { username: process.env.DISCORD_USERNAME },
-    ...process.env.DISCORD_AVATAR && { avatar_url: process.env.DISCORD_AVATAR },    
-  });
+  payload = JSON.stringify(JSON.parse(eventContent));
 } else {
-  // Otherwise, if the argument is provided, let Discord override the message.
+  // Otherwise, if the argument or embeds are provided, let Discord override the message.
   const args = argv._.join(' ');
   const message = _.template(args)({ ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) });
 
+  let embedsObject;
+  if(process.env.DISCORD_EMBEDS){
+     try {
+        embedsObject = JSON.parse(process.env.DISCORD_EMBEDS);
+     } catch (parseErr) {
+       console.error('Error parsing DISCORD_EMBEDS:' + parseErr);
+       process.exit(1);
+     }
+  }
   url = process.env.DISCORD_WEBHOOK;
   payload = JSON.stringify({
     content: message,
+    ...process.env.DISCORD_EMBEDS && { embeds: embedsObject},
     ...process.env.DISCORD_USERNAME && { username: process.env.DISCORD_USERNAME },
     ...process.env.DISCORD_AVATAR && { avatar_url: process.env.DISCORD_AVATAR },
   });
