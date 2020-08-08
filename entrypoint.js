@@ -13,6 +13,8 @@ const REQUIRED_ENV_VARS = [
   'DISCORD_WEBHOOK'
 ];
 
+process.env.GITHUB_ACTION = process.env.GITHUB_ACTION || '<missing GITHUB_ACTION env var>';
+
 REQUIRED_ENV_VARS.forEach(env => {
   if (!process.env[env] || !process.env[env].length) {
     console.error(

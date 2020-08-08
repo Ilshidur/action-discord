@@ -8,7 +8,7 @@ LABEL "com.github.actions.color"="gray-dark"
 LABEL "repository"="https://github.com/Ilshidur/actions"
 LABEL "homepage"="https://github.com/Ilshidur/actions/discord"
 LABEL "maintainer"="Ilshidur <ilshidur@gmail.com>"
-LABEL "version"="0.1.0"
+LABEL "version"="0.2.0"
 
 ADD package.json package-lock.json /
 RUN npm ci --production
