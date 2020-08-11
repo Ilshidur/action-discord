@@ -61,6 +61,7 @@ e.g.: `Action called: {{ GITHUB_ACTION }} as {{ EVENT_PAYLOAD.pull_request.id }}
   * ***IMPORTANT !!* You MUST NOT append `/github` at the end of the webhook.**
 * **`DISCORD_USERNAME`** (*optional*): overrides the bot nickname.
 * **`DISCORD_AVATAR`** (*optional*): overrides the avatar URL.
+* **`DISCORD_EMBEDS`** (*optional*): This should be a valid JSON string of an array of Discord `embed` objects. See the [documentation on Discord WebHook Embeds](https://birdie0.github.io/discord-webhooks-guide/structure/embeds.html) for more information.
 * That's all.
 
 ## Alternatives
