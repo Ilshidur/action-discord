@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Ilshidur/actions#readme",
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "0.20.0",
     "lodash": "4.17.20",
     "yargs": "15.4.1"
   },
