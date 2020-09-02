@@ -41,14 +41,15 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   const message = _.template(args)({ ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) });
 
   let embedsObject;
-  if(process.env.DISCORD_EMBEDS){
+  if (process.env.DISCORD_EMBEDS) {
      try {
         embedsObject = JSON.parse(process.env.DISCORD_EMBEDS);
      } catch (parseErr) {
-       console.error('Error parsing DISCORD_EMBEDS:' + parseErr);
+       console.error('Error parsing DISCORD_EMBEDS :' + parseErr);
        process.exit(1);
      }
   }
+
   url = process.env.DISCORD_WEBHOOK;
   payload = JSON.stringify({
     content: message,
