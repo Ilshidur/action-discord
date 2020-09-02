@@ -53,7 +53,7 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   url = process.env.DISCORD_WEBHOOK;
   payload = JSON.stringify({
     content: message,
-    ...process.env.DISCORD_EMBEDS && { embeds: embedsObject},
+    ...process.env.DISCORD_EMBEDS && { embeds: embedsObject },
     ...process.env.DISCORD_USERNAME && { username: process.env.DISCORD_USERNAME },
     ...process.env.DISCORD_AVATAR && { avatar_url: process.env.DISCORD_AVATAR },
   });
