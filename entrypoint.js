@@ -38,7 +38,11 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
 } else {
   // Otherwise, if the argument or embeds are provided, let Discord override the message.
   const args = argv._.join(' ');
-  const message = _.template(args)({ ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) });
+  let message = _.template(args)({ ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) });
+
+  if (process.env.DISCORD_MULTILINE == true) {
+    message = message.replace(/\\n/g, '\n');
+  }
 
   let embedsObject;
   if (process.env.DISCORD_EMBEDS) {
