@@ -1,0 +1,14 @@
+name: 'Actions for Discord'
+description: 'Outputs a message to Discord.'
+author: Ilshidur
+branding:
+  icon: message-square
+  color: gray-dark
+inputs:
+  args:
+    description: 'The message to display in the Discord message.'
+    required: true
+  # TODO: Handle configuration through Action inputs.
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
