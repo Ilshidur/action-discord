@@ -34,7 +34,7 @@ As this Action is containerized with Docker, [it can only run on Linux environme
 **NOTICE :** for stability purposes, it is recommended to use the action with an explicit commit SHA-1 :
 
 * Version : `uses: "Ilshidur/action-discord@0.3.2"` (&rarr; link to the releases list : https://github.com/Ilshidur/action-discord/releases)
-* Commit SHA-1 : `uses: "Ilshidur/action-discord@99b3d92"` (&rarr; link to the commits list : https://github.com/Ilshidur/action-discord/commits/master)
+* Commit SHA-1 : `uses: "Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9"` (&rarr; link to the commits list : https://github.com/Ilshidur/action-discord/commits/master)
 
 ### Arguments
 
