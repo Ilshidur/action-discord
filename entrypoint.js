@@ -28,12 +28,13 @@ const eventContent = fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8');
 
 _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
-let url;
-let payload;
+let url, payload;
+const discordWebhook = process.env.DISCORD_WEBHOOK
 
 if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   // If argument and embeds NOT provided, let Discord show the event informations.
-  url = `${process.env.DISCORD_WEBHOOK}/github`;
+  
+  url =  discordWebhook.includes('/github') ? `${discordWebhook}` : `${discordWebhook}/github`
   payload = JSON.stringify(JSON.parse(eventContent));
 } else {
   // Otherwise, if the argument or embeds are provided, let Discord override the message.
@@ -50,7 +51,7 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
      }
   }
 
-  url = process.env.DISCORD_WEBHOOK;
+  url = discordWebhook;
   payload = JSON.stringify({
     content: message,
     ...process.env.DISCORD_EMBEDS && { embeds: embedsObject },
