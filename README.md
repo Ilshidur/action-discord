@@ -58,6 +58,7 @@ e.g.: `Action called: {{ GITHUB_ACTION }} as {{ EVENT_PAYLOAD.pull_request.id }}
 ### Environment variables
 
 * **`DISCORD_WEBHOOK`** (**required**): the Discord webhook URL (see https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
+  * ***IMPORTANT !!* You MUST NOT append `/github` at the end of the webhook.**
 * **`DISCORD_USERNAME`** (*optional*): overrides the bot nickname.
 * **`DISCORD_AVATAR`** (*optional*): overrides the avatar URL.
 * **`DISCORD_EMBEDS`** (*optional*): This should be a valid JSON string of an array of Discord `embed` objects. See the [documentation on Discord WebHook Embeds](https://birdie0.github.io/discord-webhooks-guide/structure/embeds.html) for more information. You can use set it to `${{ toJson(my_value) }}` using [`toJson()`](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#tojson) if your input is an object value.
