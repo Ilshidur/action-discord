@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:12.19.1
+FROM mhart/alpine-node:16.4.2
 
 ADD package.json package-lock.json /
 RUN npm ci --production
