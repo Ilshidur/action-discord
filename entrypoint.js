@@ -42,12 +42,12 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
 
   let embedsObject;
   if (process.env.DISCORD_EMBEDS) {
-     try {
-        embedsObject = JSON.parse(process.env.DISCORD_EMBEDS);
-     } catch (parseErr) {
-       console.error('Error parsing DISCORD_EMBEDS :' + parseErr);
-       process.exit(1);
-     }
+    try {
+      embedsObject = JSON.parse(process.env.DISCORD_EMBEDS);
+    } catch (parseErr) {
+      console.error('Error parsing DISCORD_EMBEDS :' + parseErr);
+      process.exit(1);
+    }
   }
 
   url = process.env.DISCORD_WEBHOOK;
@@ -61,10 +61,12 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
 
 // curl -X POST -H "Content-Type: application/json" --data "$(cat $GITHUB_EVENT_PATH)" $DISCORD_WEBHOOK/github
 
+let waitParamPrefix = url.includes('?') ? '&' : '?';
+
 (async () => {
   console.log('Sending message ...');
   await axios.post(
-    `${url}?wait=true`,
+    `${url}${waitParamPrefix}wait=true`,
     payload,
     {
       headers: {
