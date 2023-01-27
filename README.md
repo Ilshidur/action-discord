@@ -62,6 +62,18 @@ e.g.: `Action called: {{ GITHUB_ACTION }} as {{ EVENT_PAYLOAD.pull_request.id }}
 * **`DISCORD_USERNAME`** (*optional*): overrides the bot nickname.
 * **`DISCORD_AVATAR`** (*optional*): overrides the avatar URL.
 * **`DISCORD_EMBEDS`** (*optional*): This should be a valid JSON string of an array of Discord `embed` objects. See the [documentation on Discord WebHook Embeds](https://birdie0.github.io/discord-webhooks-guide/structure/embeds.html) for more information. You can use set it to `${{ toJson(my_value) }}` using [`toJson()`](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#tojson) if your input is an object value.
+
+#### Environment Variables Examples
+```yaml
+- name: Discord notification
+  env:
+    DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+    DISCORD_USERNAME: Discord notifier
+    DISCORD_AVATAR: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+    DISCORD_EMBEDS: |
+      [{"title":"Hello, beautiful !", "description":"I ran a GitHub Actions for you <3"}]
+  uses: Ilshidur/action-discord@master
+```
 * That's all.
 
 ## Alternatives
