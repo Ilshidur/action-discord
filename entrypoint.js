@@ -51,19 +51,22 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   }
 
   url = process.env.DISCORD_WEBHOOK;
-  payload = JSON.stringify({
-    content: message,
-    ...process.env.DISCORD_EMBEDS && { embeds: embedsObject },
-    ...process.env.DISCORD_USERNAME && { username: process.env.DISCORD_USERNAME },
-    ...process.env.DISCORD_AVATAR && { avatar_url: process.env.DISCORD_AVATAR },
-  });
+  const discordMessageIdToReplyTo = process.env.DISCORD_MESSAGE_ID;
+
+payload = JSON.stringify({
+  content: message,
+  ...(discordMessageIdToReplyTo && { message_reference: { message_id: discordMessageIdToReplyTo } }),
+  ...process.env.DISCORD_EMBEDS && { embeds: embedsObject },
+  ...process.env.DISCORD_USERNAME && { username: process.env.DISCORD_USERNAME },
+  ...process.env.DISCORD_AVATAR && { avatar_url: process.env.DISCORD_AVATAR },
+});
 }
 
 // curl -X POST -H "Content-Type: application/json" --data "$(cat $GITHUB_EVENT_PATH)" $DISCORD_WEBHOOK/github
 
 (async () => {
   console.log('Sending message ...');
-  await axios.post(
+  const response = await axios.post(
     `${url}?wait=true`,
     payload,
     {
@@ -73,7 +76,17 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
       },
     },
   );
-  console.log('Message sent ! Shutting down ...');
+
+  // Capture the message ID from the response
+  const messageId = response.data.id;
+  console.log(`Message ID: ${messageId}`);
+
+  // Save the message ID to GitHub Actions output
+  if (process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, `message_id=${messageId}\n`);
+  }
+
+  console.log('Message sent! Shutting down ...');
   process.exit(0);
 })().catch(err => {
   console.error('Error :', err.response.status, err.response.statusText);
