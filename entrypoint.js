@@ -41,6 +41,7 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   const message = _.template(args)({ ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) });
 
   let embedsObject;
+  let mentionsObject;
   if (process.env.DISCORD_EMBEDS) {
      try {
         embedsObject = JSON.parse(process.env.DISCORD_EMBEDS);
@@ -49,13 +50,26 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
        process.exit(1);
      }
   }
+  if (process.env.DISCORD_MENTIONS) {
+     try {
+        mentionsObject = JSON.parse(process.env.DISCORD_MENTIONS);
+     } catch (parseErr) {
+       console.error('Error parsing DISCORD_MENTIONS :' + parseErr);
+       process.exit(1);
+     }
+  }
 
   url = process.env.DISCORD_WEBHOOK;
   payload = JSON.stringify({
     content: message,
-    ...process.env.DISCORD_EMBEDS && { embeds: embedsObject },
-    ...process.env.DISCORD_USERNAME && { username: process.env.DISCORD_USERNAME },
-    ...process.env.DISCORD_AVATAR && { avatar_url: process.env.DISCORD_AVATAR },
+    ...(process.env.DISCORD_EMBEDS && { embeds: embedsObject }),
+    ...(process.env.DISCORD_MENTIONS && { allowed_mentions: mentionsObject }),
+    ...(process.env.DISCORD_USERNAME && {
+      username: process.env.DISCORD_USERNAME,
+    }),
+    ...(process.env.DISCORD_AVATAR && {
+      avatar_url: process.env.DISCORD_AVATAR,
+    }),
   });
 }
 
